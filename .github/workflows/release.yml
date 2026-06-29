@@ -129,8 +129,6 @@ jobs:
       fail-fast: true
       matrix:
         include:
-          - platform: macos
-            runs_on: macos-26
           - platform: windows
             runs_on: windows-2022
     runs-on: ${{ matrix.runs_on }}
@@ -179,23 +177,6 @@ jobs:
           SENTRY_LARAVEL_DSN: ${{ secrets.SENTRY_LARAVEL_DSN }}
           SENTRY_RELEASE: ${{ needs.create_draft_release.outputs.app_version }}
         run: php .github/scripts/prepare-release-env.php
-
-      - name: Import Apple Developer ID certificate (.p12)
-        if: matrix.platform == 'macos'
-        uses: apple-actions/import-codesign-certs@v6
-        with:
-          p12-file-base64: ${{ secrets.MACOS_CERTIFICATE_P12_BASE64 }}
-          p12-password: ${{ secrets.MACOS_CERTIFICATE_PASSWORD }}
-
-      - name: Publish (macOS) via NativePHP
-        if: matrix.platform == 'macos'
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
-          NATIVEPHP_APPLE_ID: ${{ secrets.APPLE_ID }}
-          NATIVEPHP_APPLE_ID_PASS: ${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }}
-          NATIVEPHP_APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
-        run: |
-          php artisan native:publish mac
 
       - name: Publish (Windows) via NativePHP (UNSIGNED)
         if: matrix.platform == 'windows'
