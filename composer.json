@@ -1,0 +1,108 @@
+{
+    "$schema": "https://getcomposer.org/schema.json",
+    "name": "laravel/laravel",
+    "type": "project",
+    "description": "TimeScribe",
+    "keywords": [
+        "laravel",
+        "framework"
+    ],
+    "license": "GPL-3.0-or-later",
+    "require": {
+        "php": "^8.4",
+        "ext-zip": "*",
+        "dompdf/dompdf": "^3.1",
+        "emargareten/inertia-modal": "^2.0",
+        "inertiajs/inertia-laravel": "^3.1",
+        "laravel-lang/lang": "^15.31",
+        "laravel/framework": "^13.12",
+        "laravel/nightwatch": "^1.27",
+        "laravel/tinker": "^3.0",
+        "nativephp/desktop": "^2.2",
+        "nunomaduro/laravel-optimize-database": "^1.0",
+        "prinsfrank/standards": "^3.16",
+        "sentry/sentry-laravel": "^4.25",
+        "spatie/db-dumper": "^3.8",
+        "spatie/laravel-pdf": "^2.11",
+        "spatie/laravel-settings": "^3.9",
+        "spatie/simple-excel": "^3.9",
+        "tightenco/ziggy": "^2.6",
+        "umulmrum/holiday": "^0.11"
+    },
+    "require-dev": {
+        "cweagans/composer-patches": "^2.0",
+        "driftingly/rector-laravel": "^2.4",
+        "fakerphp/faker": "^1.24",
+        "laravel/boost": "^2.4",
+        "laravel/breeze": "^2.4",
+        "laravel/pail": "^1.2",
+        "laravel/pint": "^1.29",
+        "laravel/sail": "^1.61",
+        "mockery/mockery": "^1.6",
+        "nunomaduro/collision": "^8.9",
+        "pestphp/pest": "^v4.7",
+        "pestphp/pest-plugin-browser": "^4.3",
+        "pestphp/pest-plugin-laravel": "^4.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/",
+            "Emargareten\\InertiaModal\\": "vendor/emargareten/inertia-modal/src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi",
+            "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
+            "@php artisan migrate --graceful --ansi"
+        ],
+        "dev": [
+            "Composer\\Config::disableProcessTimeout",
+            "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite"
+        ],
+        "native:dev": [
+            "Composer\\Config::disableProcessTimeout",
+            "npx concurrently -k -c \"#93c5fd,#c4b5fd\" \"php artisan native:run --no-interaction\" \"npm run dev\" --names=app,vite"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        },
+        "patches": {
+            "pestphp/pest-plugin-browser": {
+                "Use device scale for browser screenshots": "tests/patches/pest-plugin-browser/device-scale.patch"
+            }
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true,
+            "cweagans/composer-patches": true,
+            "cweagans/composer-configurable-plugin": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

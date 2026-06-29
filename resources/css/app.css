@@ -1,0 +1,402 @@
+@import 'tailwindcss';
+
+@plugin 'tailwindcss-animate';
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* latin */
+@font-face {
+    font-family: 'Lobster Two';
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url('fonts/LobsterTwo-Italic.woff2') format('woff2');
+    unicode-range:
+        U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F,
+        U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Lobster Two';
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
+    src: url('fonts/LobsterTwo-BoldItalic.woff2') format('woff2');
+    unicode-range:
+        U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F,
+        U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Lobster Two';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('fonts/LobsterTwo-Regular.woff2') format('woff2');
+    unicode-range:
+        U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F,
+        U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Lobster Two';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('fonts/LobsterTwo-Bold.woff2') format('woff2');
+    unicode-range:
+        U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F,
+        U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+#app {
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+html {
+    overflow: hidden;
+}
+
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+}
+
+.fade-backward-enter-active,
+.fade-backward-leave-active,
+.fade-forward-enter-active,
+.fade-forward-leave-active {
+    @apply transition-all duration-500 ease-in-out;
+}
+
+.fade-backward-enter-from,
+.fade-backward-leave-to,
+.fade-forward-enter-from,
+.fade-forward-leave-to {
+    opacity: 0;
+}
+
+.fade-forward-enter-from {
+    transform: translateX(20%);
+}
+
+.fade-forward-leave-to {
+    transform: translateX(-20%);
+}
+
+.fade-backward-enter-from {
+    transform: translateX(-20%);
+}
+
+.fade-backward-leave-to {
+    transform: translateX(20%);
+}
+
+:root {
+    --background: hsl(0 0% 100%);
+    --foreground: hsl(0, 0%, 9%);
+
+    --card: hsl(0 0% 100%);
+    --card-foreground: hsl(0, 0%, 9%);
+
+    --popover: hsl(0 0% 100%);
+    --popover-foreground: hsl(0, 0%, 9%);
+
+    --primary: oklch(0.71 0.1527 206.2066);
+    --primary-foreground: hsl(210 40% 98%);
+
+    --secondary: hsl(0, 0%, 98%);
+    --secondary-foreground: hsl(0, 0%, 16%);
+
+    --muted: hsl(0, 0%, 96%);
+    --muted-foreground: hsl(0, 0%, 55%);
+
+    --accent: hsl(0, 0%, 98%);
+    --accent-foreground: hsl(0, 0%, 16%);
+
+    --destructive: hsl(0 84.2% 60.2%);
+    --destructive-foreground: hsl(0, 0%, 99%);
+
+    --border: hsl(0, 0%, 94%);
+    --input: hsl(0, 0%, 94%);
+    --ring: oklch(0.71 0.1527 206.2066);
+    --radius: 0.5rem;
+    --sidebar: oklch(0.985 0 0);
+    --sidebar-foreground: oklch(0.145 0 0);
+    --sidebar-primary: oklch(0.205 0 0);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.955 0 89.876);
+    --sidebar-accent-foreground: oklch(0.205 0 0);
+    --sidebar-border: oklch(0.922 0 0);
+    --sidebar-ring: oklch(0.708 0 0);
+    --scrollbar-thumb: oklch(0.709 0 89.876);
+    --scrollbar-thumb-foreground: hsl(0, 0%, 53%);
+}
+
+.dark {
+    --background: hsl(0, 0%, 5%);
+    --foreground: hsl(0, 0%, 99%);
+
+    --card: hsl(0, 0%, 9%);
+    --card-foreground: hsl(0, 0%, 99%);
+
+    --popover: hsl(0, 0%, 9%);
+    --popover-foreground: hsl(0, 0%, 99%);
+
+    --primary: oklch(0.82 0.1741 206.2066);
+    --primary-foreground: hsl(222.2 47.4% 11.2%);
+
+    --secondary: hsl(0, 0%, 23%);
+    --secondary-foreground: hsl(0, 0%, 99%);
+
+    --muted: hsl(0, 0%, 23%);
+    --muted-foreground: hsl(0, 0%, 72%);
+
+    --accent: hsl(0, 0%, 23%);
+    --accent-foreground: hsl(0, 0%, 99%);
+
+    --destructive: oklch(0.61 0.2724 26.32);
+    --destructive-foreground: hsl(0, 0%, 99%);
+
+    --border: hsl(0, 0%, 23%);
+    --input: hsl(0, 0%, 23%);
+    --ring: oklch(0.82 0.1741 206.2066);
+    --sidebar: oklch(0.205 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(0.82 0.1741 206.2066);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.269 0 0);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(0.269 0 0);
+    --sidebar-ring: oklch(0.439 0 0);
+    --scrollbar-thumb: oklch(0.439 0 89.876);
+    --scrollbar-thumb-foreground: hsl(0, 0%, 45%);
+}
+
+.windows *::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-foreground);
+}
+
+.windows *::-webkit-scrollbar {
+    @apply appearance-none;
+}
+
+.windows *::-webkit-scrollbar:vertical {
+    @apply w-2.5;
+}
+
+.windows *::-webkit-scrollbar:horizontal {
+    @apply w-2.5;
+}
+
+.windows *::-webkit-scrollbar-thumb {
+    @apply rounded-full;
+    background: var(--scrollbar-thumb);
+}
+
+@layer base {
+    * {
+        -webkit-user-drag: none;
+        @apply border-border;
+        scrollbar-color: var(--scrollbar-thumb) transparent;
+    }
+
+    html,
+    body {
+        @apply text-foreground bg-transparent;
+    }
+
+    a {
+        @apply cursor-default;
+    }
+
+    .apexcharts-canvas,
+    .apexcharts-svg {
+        &:focus,
+        &:focus-visible {
+            @apply outline-none;
+        }
+    }
+
+    .apexcharts-tooltip {
+        @apply bg-background! border-border! shadow-sm!;
+
+        .apexcharts-tooltip-title {
+            @apply bg-muted! border-border!;
+        }
+    }
+
+    .scroll-shadow-x {
+        animation: auto linear 0s 1 normal none running shadow-animation-x;
+        animation-timeline: scroll(self x);
+    }
+
+    .scroll-shadow-y {
+        animation: auto linear 0s 1 normal none running shadow-animation-y;
+        animation-timeline: scroll(self y);
+    }
+
+    @keyframes shadow-animation-x {
+        0% {
+            box-shadow: rgba(0, 0, 0, 0.08) -12px 0 12px -10px inset;
+        }
+        15% {
+            box-shadow:
+                rgba(0, 0, 0, 0.08) 12px 0 12px -10px inset,
+                rgba(0, 0, 0, 0.08) -12px 0 12px -10px inset;
+        }
+        85% {
+            box-shadow:
+                rgba(0, 0, 0, 0.08) 12px 0 12px -10px inset,
+                rgba(0, 0, 0, 0.08) -12px 0 12px -10px inset;
+        }
+        100% {
+            box-shadow: rgba(0, 0, 0, 0.08) 12px 0 12px -10px inset;
+        }
+    }
+
+    @keyframes shadow-animation-y {
+        0% {
+            box-shadow: rgba(0, 0, 0, 0.08) 0 -12px 12px -10px inset;
+        }
+        15% {
+            box-shadow:
+                rgba(0, 0, 0, 0.08) 0 12px 12px -10px inset,
+                rgba(0, 0, 0, 0.08) 0 -12px 12px -10px inset;
+        }
+        85% {
+            box-shadow:
+                rgba(0, 0, 0, 0.08) 0 12px 12px -10px inset,
+                rgba(0, 0, 0, 0.08) 0 -12px 12px -10px inset;
+        }
+        100% {
+            box-shadow: rgba(0, 0, 0, 0.08) 0 12px 12px -10px inset;
+        }
+    }
+}
+
+@theme inline {
+    --font-lobster-two: 'Lobster Two';
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --radius-xl: calc(var(--radius) + 4px);
+    --radius-lg: var(--radius);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-sm: calc(var(--radius) - 4px);
+
+    --animate-accordion-down: accordion-down 0.2s ease-out;
+    --animate-accordion-up: accordion-up 0.2s ease-out;
+    --animate-collapsible-down: collapsible-down 0.2s ease-in-out;
+    --animate-collapsible-up: collapsible-up 0.2s ease-in-out;
+    --animate-progress: progress 4s ease-out infinite;
+    --color-sidebar-ring: var(--sidebar-ring);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar: var(--sidebar);
+
+    @keyframes accordion-down {
+        0% {
+            height: 0;
+        }
+        100% {
+            height: var(--radix-accordion-content-height);
+        }
+    }
+
+    @keyframes accordion-up {
+        0% {
+            height: var(--radix-accordion-content-height);
+        }
+        100% {
+            height: 0;
+        }
+    }
+
+    @keyframes collapsible-down {
+        0% {
+            height: 0;
+        }
+        100% {
+            height: var(--radix-collapsible-content-height);
+        }
+    }
+
+    @keyframes collapsible-up {
+        0% {
+            height: var(--radix-collapsible-content-height);
+        }
+        100% {
+            height: 0;
+        }
+    }
+
+    @keyframes progress {
+        0% {
+            transform: translateY(100%);
+            opacity: 1;
+            filter: blur(0px);
+        }
+
+        60% {
+            transform: translateY(0%);
+            filter: blur(4px);
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 0;
+        }
+    }
+
+    @keyframes ringOffset {
+        0%,
+        100% {
+            --tw-ring-offset-width: 1px;
+        }
+
+        50% {
+            --tw-ring-offset-width: 3px;
+        }
+    }
+}

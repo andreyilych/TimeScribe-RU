@@ -1,0 +1,21 @@
+{
+    "agents": [
+        "codex",
+        "opencode"
+    ],
+    "cloud": false,
+    "guidelines": true,
+    "mcp": true,
+    "nightwatch_mcp": false,
+    "packages": [
+        "spatie/laravel-pdf"
+    ],
+    "sail": false,
+    "skills": [
+        "laravel-best-practices",
+        "pest-testing",
+        "inertia-vue-development",
+        "tailwindcss-development",
+        "laravel-pdf"
+    ]
+}
