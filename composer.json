@@ -100,7 +100,7 @@
         "allow-plugins": {
             "pestphp/pest-plugin": true,
             "php-http/discovery": true,
-            "cweagans/composer-patches": true,
+            "cweagans/composer-patches": false,
             "cweagans/composer-configurable-plugin": true
         }
     },
