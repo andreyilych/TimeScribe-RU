@@ -186,6 +186,13 @@ jobs:
         run: |
             composer update --lock --no-interaction
             composer install --no-interaction --prefer-dist
+      - name: Force add phpoffice/phpspreadsheet to NativePHP build
+        run: |
+            mkdir -p resources/build/app
+            cp composer.json resources/build/app/composer.json
+            cd resources/build/app
+            composer require phpoffice/phpspreadsheet --no-interaction
+            cd ../../..
 
       - name: Publish (Windows) via NativePHP (UNSIGNED)
         if: matrix.platform == 'windows'
