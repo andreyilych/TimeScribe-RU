@@ -154,6 +154,8 @@ jobs:
 
       - name: Install dependencies
         run: |
+          composer clear-cache
+          composer update --lock
           composer install --no-interaction --prefer-dist
           npm ci
 
