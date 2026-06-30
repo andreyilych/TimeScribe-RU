@@ -182,10 +182,6 @@ jobs:
             php .github/scripts/prepare-release-env.php
             php artisan key:generate --force
 
-      - name: Sync composer.lock for NativePHP
-        run: |
-            composer update --lock --no-interaction
-            composer install --no-interaction --prefer-dist
       - name: Force add phpoffice/phpspreadsheet to NativePHP build
         run: |
             mkdir -p resources/build/app
