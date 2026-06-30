@@ -25,7 +25,7 @@ return [
     'an error occurred while deleting all data.' => 'Произошла ошибка при удалении всех данных.',
     'an error occurred while exporting the data. please try again.' => 'Произошла ошибка при экспорте данных. Пожалуйста, попробуйте снова.',
     'an error occurred while importing the file. please check the file format and try again.' => 'Произошла ошибка при импорте файла. Проверьте формат файла и попробуйте снова.',
-    'app activities' => 'Активность',
+    'app activities' => 'Активность в приложениях',
     'app activity is deactivated' => 'Запись активности отключена',
     'appearance' => 'Внешний вид',
     'apply minimum hours for weekdays' => 'Применять минимальные часы для будних дней',

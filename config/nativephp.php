@@ -45,16 +45,16 @@ return [
      */
     'website' => env('NATIVEPHP_APP_WEBSITE'),
 
-    'require' => [
-    'phpoffice/phpspreadsheet' => '^5.8',
-    ],
-
     /**
      * The default service provider for your application. This provider
      * takes care of bootstrapping your application and configuring
      * any global hotkeys, menus, windows, etc.
      */
     'provider' => NativeAppServiceProvider::class,
+
+    'require' => [
+        'phpoffice/phpspreadsheet' => '^5.8',
+    ],
 
     /**
      * A list of environment keys that should be removed from the
