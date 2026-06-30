@@ -19,6 +19,11 @@ use Illuminate\Support\Str;
 use OpenSpout\Common\Entity\Style\Style;
 use Spatie\LaravelPdf\Facades\Pdf;
 use Spatie\SimpleExcel\SimpleExcelWriter;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
+use PhpOffice\PhpSpreadsheet\Style\Fill;
+use PhpOffice\PhpSpreadsheet\Style\Border;
 
 class ExportService
 {
@@ -130,19 +135,123 @@ class ExportService
 
     public function exportAsExcel(string $filePath): void
     {
-        $style = (new Style)
-            ->setFontBold()
-            ->setFontSize(12)
-            ->setFontColor('0F172A')
-            ->setBackgroundColor('00C9DB');
-
-        $writer = SimpleExcelWriter::create($filePath);
-        $writer->setHeaderStyle($style);
-        $writer->addHeader($this->headerArray());
-
-        foreach ($this->getExportData() as $timestamp) {
-            $writer->addRow($this->timestampToRowArray($timestamp));
+        $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+        
+        // Устанавливаем шрифт Times New Roman 12pt для всего документа
+        $sheet->getParent()->getDefaultStyle()->getFont()->setName('Times New Roman')->setSize(12);
+        
+        // Устанавливаем ширину столбцов в пикселях (1px = 0.75 символа в PhpSpreadsheet)
+        $sheet->getColumnDimension('A')->setWidth(62 * 0.75);
+        $sheet->getColumnDimension('B')->setWidth(417 * 0.75);
+        $sheet->getColumnDimension('C')->setWidth(417 * 0.75);
+        $sheet->getColumnDimension('D')->setWidth(417 * 0.75);
+        $sheet->getColumnDimension('E')->setWidth(109 * 0.75);
+        $sheet->getColumnDimension('F')->setWidth(109 * 0.75);
+        $sheet->getColumnDimension('G')->setWidth(109 * 0.75);
+        
+        $rowIndex = 1;
+        
+        // Строка 1: Заголовок "Программист"
+        $sheet->mergeCells('A' . $rowIndex . ':G' . $rowIndex);
+        $sheet->setCellValue('A' . $rowIndex, 'Программист');
+        $sheet->getStyle('A' . $rowIndex)->applyFromArray([
+            'font' => [
+                'bold' => true,
+                'name' => 'Times New Roman',
+                'size' => 12,
+            ],
+            'fill' => [
+                'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
+                'startColor' => ['rgb' => 'B7DEE8'],
+            ],
+            'alignment' => [
+                'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
+                'vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER,
+            ],
+        ]);
+        $rowIndex++;
+        
+        // Получаем данные
+        $exportData = $this->getExportData();
+        
+        // Группируем записи по проектам
+        $groupedData = [];
+        foreach ($exportData as $timestamp) {
+            $projectName = $timestamp->project?->name ?? 'Без проекта';
+            if (!isset($groupedData[$projectName])) {
+                $groupedData[$projectName] = [];
+            }
+            $groupedData[$projectName][] = $timestamp;
         }
+        
+        // Проходим по каждой группе проектов
+        foreach ($groupedData as $projectName => $timestamps) {
+            // Строка с названием проекта
+            $sheet->mergeCells('A' . $rowIndex . ':G' . $rowIndex);
+            $sheet->setCellValue('A' . $rowIndex, $projectName);
+            $sheet->getStyle('A' . $rowIndex)->applyFromArray([
+                'font' => [
+                    'bold' => true,
+                    'name' => 'Times New Roman',
+                    'size' => 12,
+                ],
+                'fill' => [
+                    'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
+                    'startColor' => ['rgb' => 'D9D9D9'],
+                ],
+                'alignment' => [
+                    'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT,
+                    'vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER,
+                ],
+            ]);
+            $rowIndex++;
+            
+            // Записи отработанных часов
+            $counter = 1;
+            foreach ($timestamps as $timestamp) {
+                // Столбец A: Нумерация
+                $sheet->setCellValue('A' . $rowIndex, $counter);
+                
+                // Столбец B: Дата в формате "24 июня 2026 года"
+                $date = $timestamp->started_at;
+                $months = [
+                    1 => 'января', 2 => 'февраля', 3 => 'марта',
+                    4 => 'апреля', 5 => 'мая', 6 => 'июня',
+                    7 => 'июля', 8 => 'августа', 9 => 'сентября',
+                    10 => 'октября', 11 => 'ноября', 12 => 'декабря'
+                ];
+                $formattedDate = $date->day . ' ' . $months[$date->month] . ' ' . $date->year . ' года';
+                $sheet->setCellValue('B' . $rowIndex, $formattedDate);
+                
+                // Столбец C: Длительность в формате "H ч. MM мин."
+                $duration = $timestamp->duration;
+                $hours = floor($duration / 3600);
+                $minutes = floor(($duration % 3600) / 60);
+                $formattedDuration = $hours . ' ч. ' . $minutes . ' мин.';
+                $sheet->setCellValue('C' . $rowIndex, $formattedDuration);
+                
+                // Столбец D: "Человеческие и временные"
+                $sheet->setCellValue('D' . $rowIndex, 'Человеческие и временные');
+                
+                // Столбец E: пусто
+                $sheet->setCellValue('E' . $rowIndex, '');
+                
+                // Столбец F: "отработанное время" с выравниванием по центру
+                $sheet->setCellValue('F' . $rowIndex, 'отработанное время');
+                $sheet->getStyle('F' . $rowIndex)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+                
+                // Столбец G: пусто
+                $sheet->setCellValue('G' . $rowIndex, '');
+                
+                $counter++;
+                $rowIndex++;
+            }
+        }
+        
+        // Сохраняем файл
+        $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
+        $writer->save($filePath);
     }
 
     public function exportAsPdf(string $filePath): void

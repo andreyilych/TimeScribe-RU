@@ -20,6 +20,7 @@
         "laravel/tinker": "^3.0",
         "nativephp/desktop": "^2.2",
         "nunomaduro/laravel-optimize-database": "^1.0",
+        "phpoffice/phpspreadsheet": "^3.0",
         "prinsfrank/standards": "^3.16",
         "sentry/sentry-laravel": "^4.25",
         "spatie/db-dumper": "^3.8",
