@@ -152,11 +152,17 @@ jobs:
           node-version: "22"
           cache: "npm"
 
+      - name: Debug composer.lock
+        run: cat composer.lock | grep phpoffice/phpspreadsheet || echo "Package not found"
+
+      - name: Clear Composer cache
+        run: composer clear-cache
+
       - name: Install dependencies
         run: |
           composer clear-cache
           composer update --lock
-          composer install --no-interaction --prefer-dist
+          composer install --no-dev --prefer-dist
           npm ci
 
       - name: Prepare release environment file

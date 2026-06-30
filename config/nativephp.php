@@ -52,10 +52,6 @@ return [
      */
     'provider' => NativeAppServiceProvider::class,
 
-    'require' => [
-        'phpoffice/phpspreadsheet' => '^5.8',
-    ],
-
     /**
      * A list of environment keys that should be removed from the
      * .env file when the application is bundled for production.
