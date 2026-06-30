@@ -74,6 +74,37 @@ function releaseEnvironmentValues(array $keys): array
 
 function runPrepareReleaseEnvironmentFile(): void
 {
+    // 👇 СНАЧАЛА ГЕНЕРИРУЕМ КЛЮЧ (если APP_KEY не передан через env)
+    $appKey = getenv('APP_KEY');
+    if (empty($appKey)) {
+        echo "Generating application key...\n";
+        exec('php artisan key:generate --force', $output, $returnCode);
+        
+        if ($returnCode !== 0) {
+            echo "Warning: Failed to generate APP_KEY via artisan. Using fallback.\n";
+            // Fallback: генерируем ключ вручную
+            $appKey = 'base64:' . base64_encode(random_bytes(32));
+        } else {
+            // Читаем сгенерированный ключ из .env
+            if (file_exists('.env')) {
+                $envContent = file_get_contents('.env');
+                if (preg_match('/^APP_KEY=(.+)$/m', $envContent, $matches)) {
+                    $appKey = trim($matches[1]);
+                }
+            }
+        }
+        
+        // Если ключ всё ещё пуст, генерируем вручную
+        if (empty($appKey)) {
+            $appKey = 'base64:' . base64_encode(random_bytes(32));
+        }
+        
+        // Устанавливаем в окружение для следующего шага
+        putenv("APP_KEY=$appKey");
+        $_ENV['APP_KEY'] = $appKey;
+    }
+
+    // 👇 ПОТОМ СОЗДАЁМ .env ФАЙЛ
     prepareReleaseEnvironmentFile(
         templatePath: '.env.example',
         outputPath: '.env',
@@ -99,6 +130,16 @@ function runPrepareReleaseEnvironmentFile(): void
             'SENTRY_RELEASE',
         ]),
     );
+    
+    // 👇 ПРОВЕРЯЕМ, ЧТО КЛЮЧ ПОЯВИЛСЯ В .env
+    if (file_exists('.env')) {
+        $envContent = file_get_contents('.env');
+        if (preg_match('/^APP_KEY=(.+)$/m', $envContent, $matches)) {
+            echo "✅ APP_KEY successfully set: " . substr(trim($matches[1]), 0, 20) . "...\n";
+        } else {
+            echo "⚠️ APP_KEY not found in .env file!\n";
+        }
+    }
 }
 
 if (realpath($_SERVER['SCRIPT_FILENAME'] ?? '') === __FILE__) {
