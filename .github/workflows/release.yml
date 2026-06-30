@@ -151,12 +151,12 @@ jobs:
         with:
           node-version: "22"
           cache: "npm"
+          
+      - name: Clear Composer cache
+        run: composer clear-cache
 
       - name: Debug composer.lock
         run: cat composer.lock | grep phpoffice/phpspreadsheet || echo "Package not found"
-
-      - name: Clear Composer cache
-        run: composer clear-cache
 
       - name: Install dependencies
         run: |
