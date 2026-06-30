@@ -9,6 +9,8 @@ import FrFlag from '@/Components/flags/FrFlag.vue'
 import ItFlag from '@/Components/flags/ItFlag.vue'
 import PlFlag from '@/Components/flags/PlFlag.vue'
 import UsFlag from '@/Components/flags/UsFlag.vue'
+import RuFlag from '@/Components/flags/RuFlag.vue'
+
 import { Button } from '@/Components/ui/button'
 import { router } from '@inertiajs/vue3'
 import { ArrowRight } from '@lucide/vue'
@@ -23,7 +25,8 @@ const locales = [
     { code: 'it_IT', component: ItFlag },
     { code: 'pl_PL', component: PlFlag },
     { code: 'pt_BR', component: BrFlag },
-    { code: 'zh_CN', component: CnFlag }
+    { code: 'zh_CN', component: CnFlag },
+    { code: 'ru_RU', component: RuFlag }
 ]
 
 const updateLocale = (locale) => {

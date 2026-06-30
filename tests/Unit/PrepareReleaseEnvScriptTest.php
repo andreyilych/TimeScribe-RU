@@ -21,7 +21,7 @@ it('replaces existing values and appends missing release environment values', fu
     prepareReleaseEnvironmentFile($templatePath, $outputPath, [
         'APP_KEY' => 'base64:abc123',
         'APP_ENV' => 'local',
-        'APP_DEBUG' => 'false',
+        'APP_DEBUG' => 'true',
         'NATIVEPHP_APP_DESCRIPTION' => 'TimeScribe "Desktop" \\ Preview',
     ]);
 

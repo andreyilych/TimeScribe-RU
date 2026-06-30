@@ -161,7 +161,7 @@ jobs:
         env:
           APP_KEY: ${{ secrets.APP_KEY }}
           APP_ENV: local
-          APP_DEBUG: false
+          APP_DEBUG: true
           NATIVEPHP_APP_VERSION: ${{ needs.create_draft_release.outputs.app_version }}
           NATIVEPHP_APP_ID: ${{ env.NATIVEPHP_APP_ID }}
           NATIVEPHP_APP_AUTHOR: ${{ env.NATIVEPHP_APP_AUTHOR }}

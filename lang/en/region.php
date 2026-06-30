@@ -4,188 +4,188 @@ declare(strict_types=1);
 
 return [
     // Australia
-    'AU' => 'Австралия',
-    'AU-ACT' => 'Австралия - Австралийская столичная территория',
-    'AU-NSW' => 'Австралия - Новый Южный Уэльс',
-    'AU-NT' => 'Австралия - Северная территория',
-    'AU-QLD' => 'Австралия - Квинсленд',
-    'AU-SA' => 'Австралия - Южная Австралия',
-    'AU-TAS' => 'Австралия - Тасмания',
-    'AU-VIC' => 'Австралия - Виктория',
-    'AU-WA' => 'Австралия - Западная Австралия',
+    'AU' => 'Australia',
+    'AU-ACT' => 'Australia - Australian Capital Territory',
+    'AU-NSW' => 'Australia - New South Wales',
+    'AU-NT' => 'Australia - Northern Territory',
+    'AU-QLD' => 'Australia - Queensland',
+    'AU-SA' => 'Australia - South Australia',
+    'AU-TAS' => 'Australia - Tasmania',
+    'AU-VIC' => 'Australia - Victoria',
+    'AU-WA' => 'Australia - Western Australia',
 
     // Austria
-    'AT' => 'Австрия',
-    'AT-1' => 'Австрия - Бургенланд',
-    'AT-2' => 'Австрия - Каринтия',
-    'AT-3' => 'Австрия - Нижняя Австрия',
-    'AT-4' => 'Австрия - Верхняя Австрия',
-    'AT-5' => 'Австрия - Зальцбург',
-    'AT-6' => 'Австрия - Штирия',
-    'AT-7' => 'Австрия - Тироль',
-    'AT-8' => 'Австрия - Форарльберг',
-    'AT-9' => 'Австрия - Вена',
+    'AT' => 'Austria',
+    'AT-1' => 'Austria - Burgenland',
+    'AT-2' => 'Austria - Carinthia',
+    'AT-3' => 'Austria - Lower Austria',
+    'AT-4' => 'Austria - Upper Austria',
+    'AT-5' => 'Austria - Salzburg',
+    'AT-6' => 'Austria - Styria',
+    'AT-7' => 'Austria - Tyrol',
+    'AT-8' => 'Austria - Vorarlberg',
+    'AT-9' => 'Austria - Vienna',
 
     // Belarus
-    'BY' => 'Беларусь',
+    'BY' => 'Belarus',
 
     // Belgium
-    'BE' => 'Бельгия',
+    'BE' => 'Belgium',
 
     // Brazil
-    'BR' => 'Бразилия',
+    'BR' => 'Brazil',
 
     // Bulgaria
-    'BG' => 'Болгария',
+    'BG' => 'Bulgaria',
 
     // Canada
-    'CA' => 'Канада',
-    'CA-AB' => 'Канада - Альберта',
-    'CA-BC' => 'Канада - Британская Колумбия',
-    'CA-MB' => 'Канада - Манитоба',
-    'CA-NB' => 'Канада - Нью-Брансуик',
-    'CA-NL' => 'Канада - Ньюфаундленд и Лабрадор',
-    'CA-NT' => 'Канада - Северо-Западные территории',
-    'CA-NS' => 'Канада - Новая Шотландия',
-    'CA-NU' => 'Канада - Нунавут',
-    'CA-ON' => 'Канада - Онтарио',
-    'CA-PE' => 'Канада - Остров Принца Эдуарда',
-    'CA-QC' => 'Канада - Квебек',
-    'CA-SK' => 'Канада - Саскачеван',
-    'CA-YT' => 'Канада - Юкон',
+    'CA' => 'Canada',
+    'CA-AB' => 'Canada - Alberta',
+    'CA-BC' => 'Canada - British Columbia',
+    'CA-MB' => 'Canada - Manitoba',
+    'CA-NB' => 'Canada - New Brunswick',
+    'CA-NL' => 'Canada - Newfoundland and Labrador',
+    'CA-NT' => 'Canada - Northwest Territories',
+    'CA-NS' => 'Canada - Nova Scotia',
+    'CA-NU' => 'Canada - Nunavut',
+    'CA-ON' => 'Canada - Ontario',
+    'CA-PE' => 'Canada - Prince Edward Island',
+    'CA-QC' => 'Canada - Quebec',
+    'CA-SK' => 'Canada - Saskatchewan',
+    'CA-YT' => 'Canada - Yukon',
 
     // Czech Republic
-    'CZ' => 'Чехия',
+    'CZ' => 'Czech Republic',
 
     // Denmark
-    'DK' => 'Дания',
+    'DK' => 'Denmark',
 
     // Estonia
-    'EE' => 'Эстония',
+    'EE' => 'Estonia',
 
     // Finland
-    'FI' => 'Финляндия',
+    'FI' => 'Finland',
 
     // France
-    'FR' => 'Франция',
-    'FR-57' => 'Франция - Мозель',
-    'FR-67' => 'Франция - Нижний Рейн',
-    'FR-68' => 'Франция - Верхний Рейн',
-    'FR-GF' => 'Франция - Французская Гвиана',
-    'FR-GUA' => 'Франция - Гваделупа',
-    'FR-LRE' => 'Франция - Реюньон',
-    'FR-MQ' => 'Франция - Мартиника',
+    'FR' => 'France',
+    'FR-57' => 'France - Moselle',
+    'FR-67' => 'France - Bas-Rhin',
+    'FR-68' => 'France - Haut-Rhin',
+    'FR-GF' => 'France - French Guiana',
+    'FR-GUA' => 'France - Guadeloupe',
+    'FR-LRE' => 'France - La Réunion',
+    'FR-MQ' => 'France - Martinique',
 
     // Germany
-    'DE' => 'Германия',
-    'DE-BB' => 'Германия - Бранденбург',
-    'DE-BE' => 'Германия - Берлин',
-    'DE-BW' => 'Германия - Баден-Вюртемберг',
-    'DE-BY' => 'Германия - Бавария',
-    'DE-HB' => 'Германия - Бремен',
-    'DE-HE' => 'Германия - Гессен',
-    'DE-HH' => 'Германия - Гамбург',
-    'DE-MV' => 'Германия - Мекленбург-Передняя Померания',
-    'DE-NI' => 'Германия - Нижняя Саксония',
-    'DE-NW' => 'Германия - Северный Рейн-Вестфалия',
-    'DE-RP' => 'Германия - Рейнланд-Пфальц',
-    'DE-SH' => 'Германия - Шлезвиг-Гольштейн',
-    'DE-SL' => 'Германия - Саар',
-    'DE-SN' => 'Германия - Саксония',
-    'DE-ST' => 'Германия - Саксония-Анхальт',
-    'DE-TH' => 'Германия - Тюрингия',
+    'DE' => 'Germany',
+    'DE-BB' => 'Germany - Brandenburg',
+    'DE-BE' => 'Germany - Berlin',
+    'DE-BW' => 'Germany - Baden-Württemberg',
+    'DE-BY' => 'Germany - Bavaria',
+    'DE-HB' => 'Germany - Bremen',
+    'DE-HE' => 'Germany - Hesse',
+    'DE-HH' => 'Germany - Hamburg',
+    'DE-MV' => 'Germany - Mecklenburg-Western Pomerania',
+    'DE-NI' => 'Germany - Lower Saxony',
+    'DE-NW' => 'Germany - North Rhine-Westphalia',
+    'DE-RP' => 'Germany - Rhineland-Palatinate',
+    'DE-SH' => 'Germany - Schleswig-Holstein',
+    'DE-SL' => 'Germany - Saarland',
+    'DE-SN' => 'Germany - Saxony',
+    'DE-ST' => 'Germany - Saxony-Anhalt',
+    'DE-TH' => 'Germany - Thuringia',
 
     // Greenland
-    'GL' => 'Гренландия',
+    'GL' => 'Greenland',
 
     // Iceland
-    'IS' => 'Исландия',
+    'IS' => 'Iceland',
 
     // Ireland
-    'IE' => 'Ирландия',
+    'IE' => 'Ireland',
 
     // Italy
-    'IT' => 'Италия',
-    'IT-32' => 'Италия - Южный Тироль',
+    'IT' => 'Italy',
+    'IT-32' => 'Italy - South Tyrol',
 
     // Latvia
-    'LV' => 'Латвия',
+    'LV' => 'Latvia',
 
     // Liechtenstein
-    'FL' => 'Лихтенштейн',
+    'FL' => 'Liechtenstein',
 
     // Lithuania
-    'LT' => 'Литва',
+    'LT' => 'Lithuania',
 
     // Luxembourg
-    'LU' => 'Люксембург',
+    'LU' => 'Luxembourg',
 
     // Mexico
-    'MX' => 'Мексика',
+    'MX' => 'Mexico',
 
     // Netherlands
-    'NL' => 'Нидерланды',
+    'NL' => 'Netherlands',
 
     // Norway
-    'NO' => 'Норвегия',
+    'NO' => 'Norway',
 
     // Poland
-    'PL' => 'Польша',
+    'PL' => 'Poland',
 
     // Portugal
-    'PT' => 'Португалия',
-    'PT-20' => 'Португалия - Азорские острова',
-    'PT-30' => 'Португалия - Мадейра',
+    'PT' => 'Portugal',
+    'PT-20' => 'Portugal - Azores',
+    'PT-30' => 'Portugal - Madeira',
 
     // Russia
-    'RU' => 'Россия',
+    'RU' => 'Russia',
 
     // Spain
-    'ES' => 'Испания',
+    'ES' => 'Spain',
 
     // Sweden
-    'SE' => 'Швеция',
+    'SE' => 'Sweden',
 
     // Switzerland
-    'CH' => 'Швейцария',
-    'CH-AG' => 'Швейцария - Аргау',
-    'CH-AI' => 'Швейцария - Аппенцелль-Иннерроден',
-    'CH-AR' => 'Швейцария - Аппенцелль-Аусерроден',
-    'CH-BE' => 'Швейцария - Берн',
-    'CH-BL' => 'Швейцария - Базель-Ландшафт',
-    'CH-BS' => 'Швейцария - Базель-Штадт',
-    'CH-FR' => 'Швейцария - Фрибур',
-    'CH-GE' => 'Швейцария - Женева',
-    'CH-GL' => 'Швейцария - Гларус',
-    'CH-GR' => 'Швейцария - Граубюнден',
-    'CH-JU' => 'Швейцария - Юра',
-    'CH-LU' => 'Швейцария - Люцерн',
-    'CH-NE' => 'Швейцария - Невшатель',
-    'CH-NW' => 'Швейцария - Нидвальден',
-    'CH-OW' => 'Швейцария - Обвальден',
-    'CH-SG' => 'Швейцария - Санкт-Галлен',
-    'CH-SH' => 'Швейцария - Шаффхаузен',
-    'CH-SO' => 'Швейцария - Золотурн',
-    'CH-SZ' => 'Швейцария - Швиц',
-    'CH-TG' => 'Швейцария - Тургау',
-    'CH-TI' => 'Швейцария - Тичино',
-    'CH-UR' => 'Швейцария - Ури',
-    'CH-VD' => 'Швейцария - Во',
-    'CH-VS' => 'Швейцария - Вале',
-    'CH-ZG' => 'Швейцария - Цуг',
-    'CH-ZH' => 'Швейцария - Цюрих',
+    'CH' => 'Switzerland',
+    'CH-AG' => 'Switzerland - Aargau',
+    'CH-AI' => 'Switzerland - Appenzell Innerrhoden',
+    'CH-AR' => 'Switzerland - Appenzell Ausserrhoden',
+    'CH-BE' => 'Switzerland - Bern',
+    'CH-BL' => 'Switzerland - Basel-Landschaft',
+    'CH-BS' => 'Switzerland - Basel-Stadt',
+    'CH-FR' => 'Switzerland - Fribourg',
+    'CH-GE' => 'Switzerland - Geneva',
+    'CH-GL' => 'Switzerland - Glarus',
+    'CH-GR' => 'Switzerland - Graubünden',
+    'CH-JU' => 'Switzerland - Jura',
+    'CH-LU' => 'Switzerland - Lucerne',
+    'CH-NE' => 'Switzerland - Neuchâtel',
+    'CH-NW' => 'Switzerland - Nidwalden',
+    'CH-OW' => 'Switzerland - Obwalden',
+    'CH-SG' => 'Switzerland - St. Gallen',
+    'CH-SH' => 'Switzerland - Schaffhausen',
+    'CH-SO' => 'Switzerland - Solothurn',
+    'CH-SZ' => 'Switzerland - Schwyz',
+    'CH-TG' => 'Switzerland - Thurgau',
+    'CH-TI' => 'Switzerland - Ticino',
+    'CH-UR' => 'Switzerland - Uri',
+    'CH-VD' => 'Switzerland - Vaud',
+    'CH-VS' => 'Switzerland - Valais',
+    'CH-ZG' => 'Switzerland - Zug',
+    'CH-ZH' => 'Switzerland - Zurich',
 
     // Turkey
-    'TR' => 'Турция',
+    'TR' => 'Turkey',
 
     // Ukraine
-    'UA' => 'Украина',
+    'UA' => 'Ukraine',
 
     // United Kingdom
-    'GB' => 'Великобритания',
-    'GB-NIR' => 'Великобритания - Северная Ирландия',
-    'GB-SCT' => 'Великобритания - Шотландия',
+    'GB' => 'United Kingdom',
+    'GB-NIR' => 'United Kingdom - Northern Ireland',
+    'GB-SCT' => 'United Kingdom - Scotland',
 
     // USA
-    'US' => 'Соединённые Штаты Америки',
+    'US' => 'United States',
 ];
